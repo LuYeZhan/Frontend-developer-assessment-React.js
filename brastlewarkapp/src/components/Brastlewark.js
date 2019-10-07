@@ -37,7 +37,6 @@ export default class Brastlewark extends Component {
     }
     render() {
         const { persons } = this.state;
-        {console.log(persons)}
         return (
             <>
             {persons.length> 0 && persons.map((person, index)=> 
@@ -48,22 +47,37 @@ export default class Brastlewark extends Component {
                     <li>{person.age}</li>
                     <li>{Math.floor(person.height)}</li>
                     <li>{Math.floor(person.weight)}</li>
-                    <li>{person.hair_color}</li>3
-                    <li>{person.friends.map((friend, index) => {
-                        {index === friends.length ?
-                            return ( <> 
-                            {friend}&nbsp;
-                            </>
-                            ): return (
-                                <>
-                                {friend},&nbsp;
-                                </>
-                            )}
-                    })}</li>
-                    <li>{person.professions}</li>
-                    <img src={person.thumbnail} alt='gnome picture'></img>
+                    <li>{person.hair_color}</li>
+                    <li>{person.friends.length > 0 ? (
+                        <>
+                        {person.friends.map((friend, index) => {
+                            { if (index === person.friends.length - 1) {
+                                return (<> {friend}&nbsp;</>)
+                            } else { return (<>{friend},&nbsp;</>)}
+                            }
+                        })}
+                        </>
+                        ) : (
+                        <>No friends</>    
+                        )}
+                    </li>
+                    <li>{person.professions.length > 0 ? (
+                        <> 
+                        {person.professions.map((profession, index) => {
+                            { if (index === person.professions.length - 1) {
+                                return (<> {profession}&nbsp;</>)
+                            } else { return (<>{profession},&nbsp;</>)}
+                            }
+                        })}
+                        </>
+                        ) : (
+                        <>Unemployed</>        
+                        )}
+                    </li>
+                    <img src={person.thumbnail} alt='gnome' ></img>
                     </ul>
-            )})}
+            )}
+            )}
             </>
         )
     }
