@@ -1,13 +1,12 @@
 import React from 'react';
 import Brastlewark from './components/Brastlewark'
-
+import './App.css';
 
 function App() {
   return (
-    <>
-    <h1>Brastlewark App</h1>
+    <div className="container"> 
     <Brastlewark/>
-    </>
+    </div>
   );
 }
 
