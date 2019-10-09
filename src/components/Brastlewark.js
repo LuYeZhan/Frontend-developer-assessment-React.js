@@ -42,7 +42,7 @@ export default class Brastlewark extends Component {
             {persons.length> 0 && persons.map((person, index)=> 
             {
                 return (
-                    <ul key={person.id}>
+                    <ul className="person-card" key={person.id}>
                     <li>{person.name}</li>
                     <li>{person.age}</li>
                     <li>{Math.floor(person.height)}</li>
@@ -50,12 +50,12 @@ export default class Brastlewark extends Component {
                     <li>{person.hair_color}</li>
                     <li>{person.friends.length > 0 ? (
                         <>
-                        {person.friends.map((friend, index) => {
+                        {person.friends.map((friend, index) => 
                             { if (index === person.friends.length - 1) {
                                 return (<> {friend}&nbsp;</>)
                             } else { return (<>{friend},&nbsp;</>)}
                             }
-                        })}
+                        )}
                         </>
                         ) : (
                         <>No friends</>    
@@ -63,12 +63,12 @@ export default class Brastlewark extends Component {
                     </li>
                     <li>{person.professions.length > 0 ? (
                         <> 
-                        {person.professions.map((profession, index) => {
-                            { if (index === person.professions.length - 1) {
+                        {person.professions.map((profession, index) => { 
+                            if (index === person.professions.length - 1) {
                                 return (<> {profession}&nbsp;</>)
                             } else { return (<>{profession},&nbsp;</>)}
                             }
-                        })}
+                        )}
                         </>
                         ) : (
                         <>Unemployed</>        
