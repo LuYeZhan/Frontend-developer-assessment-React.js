@@ -64,3 +64,5 @@ I didn't do that because, first; I don't know if the API accepts parameters in t
 I think it's not user friendly.
 
 In the end, the search bar, renders all the gnomes that are in the database, It lowered the performance of the whole web. 
+
+If I did it again, I would probably taken anhoter approach and spend more time on figuring out a solution that is user friendly and didn't lower the performance of the render.
