@@ -13,7 +13,7 @@ This is an app to test my front-end skill in react.js. We are gonna take informa
 - **next** - As a user I can see the next 12 cards of Brastlewark habitants.
 - **previous** - As a user I can see the previous 12 cards of Brastlewark habitants.
 
-## Devstacks
+## Devstacks
 
 React.js, Axios(to call the API)
 
