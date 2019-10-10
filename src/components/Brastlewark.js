@@ -1,28 +1,5 @@
-// import apiService from '../services/api.service';
-// import React, { useState, useEffect } from 'react';
-
-// const Brastlewark = () => {
-//     const [data] = useState()null;
-    
-//     function handleData(data) {
-//     getData(data);
-//   }
-
-//     useEffect(() => {
-//     // Update the document title using the browser API
-//     apiService.getAllData();
-//   });
-//     return (
-//         <div>
-//             <h2>componente</h2>
-//         </div>
-//     )
-// }
-
-// export default Brastlewark
 import axios from 'axios';
 import React, { Component } from 'react';
-// import apiService from '../services/api.service'
 
 export default class Brastlewark extends Component {
     state = {
@@ -30,42 +7,49 @@ export default class Brastlewark extends Component {
       persons: [],
       totalPersons: 0,
       currentPage: 0,
-      offset: 10   
+      offset: 12   
     }
+    
     componentDidMount() {
         const {currentPage, offset} = this.state
         axios.get('https://raw.githubusercontent.com/rrafols/mobile_test/master/data.json')
             .then (res => {
                 const persons = res.data;
-                const paginatedPersons = persons.Brastlewark.slice(currentPage, offset)
-                this.setState({ personsFromApi: res.data, persons: paginatedPersons, totalPersons: persons.Brastlewark.length 
+        const paginatedPersons = persons.Brastlewark.slice(currentPage, offset)
+        this.setState({ personsFromApi: res.data, persons: paginatedPersons, totalPersons: persons.Brastlewark.length 
                 })
-                console.log(this.state)
             })
-        // apiService().then (res => {
-        //     const persons = res.data;
-        //     this.setState({ persons: persons.Brastlewark})
-        // })
     }
+    
 
-    handleSearch(e){
-        const {value} = e;
-        axios.get('https://raw.githubusercontent.com/rrafols/mobile_test/master/data.json')
-        .then(res => {
-            const paginatedPersons = res.data.Brastlewark.slice(0, this.state.offset)
-            this.setState({
-                persons: paginatedPersons, currentPage:0
-            })
-        })
-    }
-
-    handleNextPage() {
-        console.log(this)
+    handleNextPage = () => {
+        const {currentPage, offset, personsFromApi} = this.state
         this.setState({ 
-            currentPage:this.state.currentPage + this.state.offset
+            currentPage:currentPage + offset
         })
-        const nextPaginatedPersons = this.state.personsFromApi.slice(this.state.currentPage, this.state.offset)
-        this.setState({persons:nextPaginatedPersons})
+        const newCurrentPage = currentPage + offset
+        const nextPaginatedPersons = personsFromApi.Brastlewark.slice(newCurrentPage, newCurrentPage+offset)
+        this.setState({persons:nextPaginatedPersons, currentPage:newCurrentPage})
+    }
+
+    handlePreviousPage = () => {
+        const {currentPage, offset, personsFromApi} = this.state
+        this.setState({ 
+            currentPage:currentPage - offset
+        })
+        const newCurrentPage = currentPage - offset
+        const nextPaginatedPersons = personsFromApi.Brastlewark.slice(newCurrentPage, newCurrentPage+offset)
+        this.setState({persons:nextPaginatedPersons, currentPage:newCurrentPage})
+    }
+
+    handleSearch = (event) => {
+        const {value} = event.target;
+        const {personsFromApi} = this.state
+        const newPersonsFromApi = [...personsFromApi.Brastlewark]
+        const SearchedPerson= newPersonsFromApi.filter((e)=>{
+            return e.name.includes(value);
+        }); 
+        this.setState({persons:SearchedPerson})
     }
 
     render() {
@@ -76,7 +60,7 @@ export default class Brastlewark extends Component {
                     <h1>Brastlewark App</h1>
                     <div className="search">
                         <input className="input-background" onKeyUp={e=>this.handleSearch(e)}/>
-                        <button className="prev btn">previous</button>
+                        <button onClick={this.handlePreviousPage} className="btn">previous</button>
                         <button onClick={this.handleNextPage} className="next btn">next</button>
                     </div>
                 </nav>
