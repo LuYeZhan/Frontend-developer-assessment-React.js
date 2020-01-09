@@ -65,13 +65,13 @@ span {
   font-weight: bold;
   margin-right: 0.5rem; }
 
-.image-width {
+.composition__img {
   width: 100%;
   border-radius: 8px;
   height: 240px;
   object-fit: cover; }
 
-.person-card {
+.card__person {
   width: 100%;
   background: white;
   padding: 25px 20px;
@@ -89,7 +89,7 @@ span {
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-between; }
-  .person-card {
+  .card__person {
     width: 48%;
     margin-bottom: 40px; } }
 
@@ -99,14 +99,14 @@ span {
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-between; }
-  .person-card {
+  .card__person {
     width: 31%;
     margin-bottom: 40px; } }
 
-.content-card {
+.card__content {
   margin-bottom: 2rem; }
 
-.person-card li {
+.card__person li {
   margin-bottom: 0.5rem;
   border-bottom: 1px solid #dfdfdf; }
 

@@ -1,4 +1,4 @@
-.person-card {
+.card__person {
   width: 100%;
   background: rgb(255, 255, 255);
   padding: 25px 20px;
@@ -19,7 +19,7 @@
     justify-content: space-between;
   }
 
-  .person-card {
+  .card__person {
     width: 48%;
     margin-bottom: 40px;
   }
@@ -33,17 +33,17 @@
     justify-content: space-between;
   }
 
-  .person-card {
+  .card__person {
     width: 31%;
     margin-bottom: 40px;
   }
 }
 
-.content-card {
+.card__content {
   margin-bottom: 2rem;
 }
 
-.person-card li {
+.card__person li {
   margin-bottom: 0.5rem;
   border-bottom: 1px solid #dfdfdf;
 }

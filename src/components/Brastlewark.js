@@ -76,10 +76,7 @@ export default class Brastlewark extends Component {
         <nav>
           <h1>Brastlewark App</h1>
           <div className="search">
-            <input
-              className="input-background"
-              onKeyUp={e => this.handleSearch(e)}
-            />
+            <input onKeyUp={e => this.handleSearch(e)} />
             <button onClick={this.handlePreviousPage} className="btn">
               previous
             </button>
@@ -92,8 +89,8 @@ export default class Brastlewark extends Component {
           {persons.length > 0 &&
             persons.map((person, index) => {
               return (
-                <div className="person-card">
-                  <ul className="content-card" key={person.id}>
+                <div className="card__person">
+                  <ul className="card__content" key={person.id}>
                     <li>
                       <h2>{person.name}</h2>
                     </li>
@@ -148,7 +145,7 @@ export default class Brastlewark extends Component {
                   </ul>
                   <div>
                     <img
-                      className="image-width"
+                      className="composition__img"
                       src={person.thumbnail}
                       alt="gnome"
                     ></img>
