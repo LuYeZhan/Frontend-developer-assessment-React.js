@@ -7,7 +7,7 @@ nav {
   margin-bottom: 2rem;
   width: 100%;
   position: fixed;
-  background-color: rgb(255, 255, 255, 0.9);
+  background-color: rgba($color-white, 0.9);
 }
 
 @media (min-width: 768px) {
@@ -20,7 +20,7 @@ nav {
     margin-bottom: 3rem;
     width: 100%;
     position: fixed;
-    background-color: rgb(255, 255, 255, 0.9);
+    background-color: rgba($color-white, 0.9);
   }
 }
 
@@ -34,12 +34,6 @@ nav {
     margin-bottom: 3rem;
     width: 100%;
     position: fixed;
-    background-color: rgb(255, 255, 255, 0.9);
+    background-color: rgba($color-white, 0.9);
   }
-}
-
-/* ---- search ---- */
-
-.search {
-  margin-top: 1rem;
 }
