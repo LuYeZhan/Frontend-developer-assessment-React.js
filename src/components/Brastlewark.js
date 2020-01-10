@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { Component } from "react";
+// import Navigation from "./Navigation.js";
 
 export default class Brastlewark extends Component {
   state = {
@@ -85,6 +86,7 @@ export default class Brastlewark extends Component {
             </button>
           </div>
         </nav>
+        {/* <Navigation /> */}
         <div className="content">
           {persons.length > 0 &&
             persons.map((person, index) => {
