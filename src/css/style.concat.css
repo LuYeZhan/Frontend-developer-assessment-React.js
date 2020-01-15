@@ -10,8 +10,23 @@
   .content {
     padding: 100px 20px; } }
 
+/*
+0 - 600px: Phone
+600-900px: tablet portrait;
+900-1200px: tablet landscape
+1200-1800: is where our normal styles apply (desktop)
+1800px+ : Big desktop
+$breakpoint argument choices:
+- phone
+- tab-port
+- tab-land
+- big-desktop
+Order: Base + typography > general layout + grid > page layout > components
+1em = 16px
+*/
 html {
-  box-sizing: border-box; }
+  box-sizing: border-box;
+  font-size: 62.5%; }
 
 *,
 *:before,
@@ -21,11 +36,10 @@ html {
 body {
   color: #111;
   font-family: Helvetica, Arial, sans-serif;
-  font-size: 16px;
+  font-size: 1.6rem;
   line-height: 147%; }
 
 h1 {
-  font-size: 2rem;
   margin: 0;
   padding: 0;
   line-height: 1; }
@@ -82,6 +96,9 @@ span {
   display: flex;
   flex-direction: column;
   justify-content: space-between; }
+  .card__person:hover {
+    transform: translateY(-1.5rem) scale(1.03);
+    background-color: #7ed56f; }
 
 @media (min-width: 768px) {
   .content {
@@ -133,7 +150,8 @@ nav {
   margin-bottom: 2rem;
   width: 100%;
   position: fixed;
-  background-color: rgba(255, 255, 255, 0.9); }
+  background-color: rgba(255, 255, 255, 0.9);
+  z-index: 5; }
 
 @media (min-width: 768px) {
   nav {

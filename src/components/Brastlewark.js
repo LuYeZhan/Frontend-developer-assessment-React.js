@@ -1,6 +1,20 @@
-import axios from "axios";
-import React, { Component } from "react";
-// import Navigation from "./Navigation.js";
+import axios from 'axios';
+import React, { Component } from 'react';
+// import Navigation from './Navigation.js';
+// import Card from './Cards.js';
+
+// Implementing hooks
+// export default function Brastlewark() {
+//   useState({
+//     personsFromApi: [],
+//     persons: [],
+//     totalPersons: 0,
+//     currentPage: 0,
+//     offset: 12
+//   });
+
+//   return <div></div>;
+// }
 
 export default class Brastlewark extends Component {
   state = {
@@ -15,10 +29,11 @@ export default class Brastlewark extends Component {
     const { currentPage, offset } = this.state;
     axios
       .get(
-        "https://raw.githubusercontent.com/rrafols/mobile_test/master/data.json"
+        'https://raw.githubusercontent.com/rrafols/mobile_test/master/data.json'
       )
       .then(res => {
         const persons = res.data;
+        console.log(persons);
         const paginatedPersons = persons.Brastlewark.slice(currentPage, offset);
         this.setState({
           personsFromApi: res.data,
@@ -73,26 +88,27 @@ export default class Brastlewark extends Component {
   render() {
     const { persons } = this.state;
     return (
-      <div className="home">
+      <div className='home'>
+        {/* <Navigation persons={persons} />
+        <Card cards={persons} /> */}
         <nav>
           <h1>Brastlewark App</h1>
-          <div className="search">
+          <div className='search'>
             <input onKeyUp={e => this.handleSearch(e)} />
-            <button onClick={this.handlePreviousPage} className="btn">
+            <button onClick={this.handlePreviousPage} className='btn'>
               previous
             </button>
-            <button onClick={this.handleNextPage} className="next btn">
+            <button onClick={this.handleNextPage} className='next btn'>
               next
             </button>
           </div>
         </nav>
-        {/* <Navigation /> */}
-        <div className="content">
+        <div className='content'>
           {persons.length > 0 &&
             persons.map((person, index) => {
               return (
-                <div className="card__person">
-                  <ul className="card__content" key={person.id}>
+                <div className='card__person'>
+                  <ul className='card__content' key={person.id}>
                     <li>
                       <h2>{person.name}</h2>
                     </li>
@@ -147,9 +163,9 @@ export default class Brastlewark extends Component {
                   </ul>
                   <div>
                     <img
-                      className="composition__img"
+                      className='composition__img'
                       src={person.thumbnail}
-                      alt="gnome"
+                      alt='gnome'
                     ></img>
                   </div>
                 </div>
