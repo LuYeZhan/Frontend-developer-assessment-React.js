@@ -1,29 +1,4 @@
 @charset "UTF-8";
-.content {
-  padding: 140px 20px; }
-
-@media (min-width: 768px) {
-  .content {
-    padding: 100px 20px; } }
-
-@media (min-width: 1024px) {
-  .content {
-    padding: 100px 20px; } }
-
-/*
-0 - 600px: Phone
-600-900px: tablet portrait;
-900-1200px: tablet landscape
-1200-1800: is where our normal styles apply (desktop)
-1800px+ : Big desktop
-$breakpoint argument choices:
-- phone
-- tab-port
-- tab-land
-- big-desktop
-Order: Base + typography > general layout + grid > page layout > components
-1em = 16px
-*/
 html {
   box-sizing: border-box;
   font-size: 62.5%; }
@@ -99,6 +74,17 @@ span {
   .card__person:hover {
     transform: translateY(-1.5rem) scale(1.03);
     background-color: #7ed56f; }
+
+.content {
+  padding: 140px 20px; }
+
+@media (min-width: 768px) {
+  .content {
+    padding: 100px 20px; } }
+
+@media (min-width: 1024px) {
+  .content {
+    padding: 100px 20px; } }
 
 @media (min-width: 768px) {
   .content {

@@ -1,20 +1,5 @@
 import axios from 'axios';
 import React, { Component } from 'react';
-// import Navigation from './Navigation.js';
-// import Card from './Cards.js';
-
-// Implementing hooks
-// export default function Brastlewark() {
-//   useState({
-//     personsFromApi: [],
-//     persons: [],
-//     totalPersons: 0,
-//     currentPage: 0,
-//     offset: 12
-//   });
-
-//   return <div></div>;
-// }
 
 export default class Brastlewark extends Component {
   state = {
@@ -89,8 +74,6 @@ export default class Brastlewark extends Component {
     const { persons } = this.state;
     return (
       <div className='home'>
-        {/* <Navigation persons={persons} />
-        <Card cards={persons} /> */}
         <nav>
           <h1>Brastlewark App</h1>
           <div className='search'>

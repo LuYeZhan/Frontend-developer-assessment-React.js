@@ -16,6 +16,22 @@
   }
 }
 
+.content {
+  padding: 140px 20px;
+}
+
+@media (min-width: 768px) {
+  .content {
+    padding: 100px 20px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .content {
+    padding: 100px 20px;
+  }
+}
+
 @media (min-width: 768px) {
   .content {
     display: flex;
