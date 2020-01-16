@@ -1,6 +1,6 @@
 import React from 'react';
 import Brastlewark from './components/Brastlewark';
-import './css/style.css';
+import './sass/main.scss';
 
 function App() {
   return (

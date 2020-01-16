@@ -5,7 +5,7 @@ input {
   padding: 10px 20px;
   border: 1px solid rgb(235, 235, 235);
   border-radius: 25px;
-  background: rgba(252, 252, 252, 1);
+  background: rgba($background-primary, 1);
   margin-right: 1rem;
 }
 /* ---- search ---- */
