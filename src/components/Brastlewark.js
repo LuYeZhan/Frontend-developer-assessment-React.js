@@ -27,10 +27,10 @@ const Brastlewark = props => {
     setState({
       ...state,
       currentPage:
-        direction === '' ? currentPage + offset : currentPage - offset
+        direction === 'next' ? currentPage + offset : currentPage - offset
     });
     const newCurrentPage =
-      direction === '' ? currentPage + offset : currentPage - offset;
+      direction === 'next' ? currentPage + offset : currentPage - offset;
     const nextPaginatedPersons = personsFromApi.Brastlewark.slice(
       newCurrentPage,
       newCurrentPage + offset
