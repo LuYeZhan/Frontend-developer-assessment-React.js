@@ -1,14 +1,18 @@
 import axios from 'axios';
 import React, { Component } from 'react';
+import Cards from './Cards.js';
 
 export default class Brastlewark extends Component {
-  state = {
-    personsFromApi: [],
-    persons: [],
-    totalPersons: 0,
-    currentPage: 0,
-    offset: 12
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      personsFromApi: [],
+      persons: [],
+      totalPersons: 0,
+      currentPage: 0,
+      offset: 12
+    };
+  }
 
   componentDidMount() {
     const { currentPage, offset } = this.state;
@@ -18,7 +22,6 @@ export default class Brastlewark extends Component {
       )
       .then(res => {
         const persons = res.data;
-        console.log(persons);
         const paginatedPersons = persons.Brastlewark.slice(currentPage, offset);
         this.setState({
           personsFromApi: res.data,
@@ -71,7 +74,6 @@ export default class Brastlewark extends Component {
   };
 
   render() {
-    const { persons } = this.state;
     return (
       <div className='home'>
         <nav>
@@ -86,75 +88,7 @@ export default class Brastlewark extends Component {
             </button>
           </div>
         </nav>
-        <div className='content'>
-          {persons.length > 0 &&
-            persons.map((person, index) => {
-              return (
-                <div className='card__person'>
-                  <ul className='card__content' key={person.id}>
-                    <li>
-                      <h2>{person.name}</h2>
-                    </li>
-                    <li>
-                      <span>Age:</span>
-                      {person.age}
-                    </li>
-                    <li>
-                      <span>Height:</span>
-                      {Math.floor(person.height)}
-                    </li>
-                    <li>
-                      <span>Weight:</span>
-                      {Math.floor(person.weight)}
-                    </li>
-                    <li>
-                      <span>Hair color:</span>
-                      {person.hair_color}
-                    </li>
-                    <li>
-                      <span>Friends:</span>
-                      {person.friends.length > 0 ? (
-                        <>
-                          {person.friends.map((friend, index) => {
-                            if (index === person.friends.length - 1) {
-                              return <p> {friend}&nbsp;</p>;
-                            } else {
-                              return <p>{friend},&nbsp;</p>;
-                            }
-                          })}
-                        </>
-                      ) : (
-                        <>No friends</>
-                      )}
-                    </li>
-                    <li>
-                      <span>Profession:</span>
-                      {person.professions.length > 0 ? (
-                        <>
-                          {person.professions.map((profession, index) => {
-                            if (index === person.professions.length - 1) {
-                              return <p>{profession}&nbsp;</p>;
-                            } else {
-                              return <p>{profession},&nbsp;</p>;
-                            }
-                          })}
-                        </>
-                      ) : (
-                        <>Unemployed</>
-                      )}
-                    </li>
-                  </ul>
-                  <div>
-                    <img
-                      className='composition__img'
-                      src={person.thumbnail}
-                      alt='gnome'
-                    ></img>
-                  </div>
-                </div>
-              );
-            })}
-        </div>
+        <Cards persons={this.state.persons} />
       </div>
     );
   }
