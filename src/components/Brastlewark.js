@@ -1,95 +1,95 @@
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import React, { Component } from 'react';
 import Cards from './Cards.js';
 
-export default class Brastlewark extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      personsFromApi: [],
-      persons: [],
-      totalPersons: 0,
-      currentPage: 0,
-      offset: 12
-    };
-  }
+const Brastlewark = props => {
+  const [state, setState] = useState({
+    personsFromApi: [],
+    persons: [],
+    totalPersons: 0,
+    currentPage: 0,
+    offset: 12
+  });
 
-  componentDidMount() {
-    const { currentPage, offset } = this.state;
-    axios
-      .get(
-        'https://raw.githubusercontent.com/rrafols/mobile_test/master/data.json'
-      )
-      .then(res => {
-        const persons = res.data;
-        const paginatedPersons = persons.Brastlewark.slice(currentPage, offset);
-        this.setState({
-          personsFromApi: res.data,
-          persons: paginatedPersons,
-          totalPersons: persons.Brastlewark.length
-        });
-      });
-  }
-
-  handleNextPage = () => {
-    const { currentPage, offset, personsFromApi } = this.state;
-    this.setState({
-      currentPage: currentPage + offset
-    });
-    const newCurrentPage = currentPage + offset;
-    const nextPaginatedPersons = personsFromApi.Brastlewark.slice(
-      newCurrentPage,
-      newCurrentPage + offset
-    );
-    this.setState({
-      persons: nextPaginatedPersons,
-      currentPage: newCurrentPage
-    });
-  };
-
-  handlePreviousPage = () => {
-    const { currentPage, offset, personsFromApi } = this.state;
-    this.setState({
-      currentPage: currentPage - offset
-    });
-    const newCurrentPage = currentPage - offset;
-    const nextPaginatedPersons = personsFromApi.Brastlewark.slice(
-      newCurrentPage,
-      newCurrentPage + offset
-    );
-    this.setState({
-      persons: nextPaginatedPersons,
-      currentPage: newCurrentPage
-    });
-  };
-
-  handleSearch = event => {
+  // Search
+  const handleSearch = event => {
     const { value } = event.target;
-    const { personsFromApi } = this.state;
+    const { personsFromApi } = state;
     const newPersonsFromApi = [...personsFromApi.Brastlewark];
     const SearchedPerson = newPersonsFromApi.filter(e => {
       return e.name.includes(value);
     });
-    this.setState({ persons: SearchedPerson });
+    setState({ ...state, persons: SearchedPerson });
   };
 
-  render() {
-    return (
-      <div className='home'>
-        <nav>
-          <h1>Brastlewark App</h1>
-          <div className='search'>
-            <input onKeyUp={e => this.handleSearch(e)} />
-            <button onClick={this.handlePreviousPage} className='btn'>
-              previous
-            </button>
-            <button onClick={this.handleNextPage} className='btn'>
-              next
-            </button>
-          </div>
-        </nav>
-        <Cards persons={this.state.persons} />
-      </div>
+  const handlePageMovement = direction => {
+    const { currentPage, offset, personsFromApi } = state;
+    setState({
+      ...state,
+      currentPage:
+        direction === '' ? currentPage + offset : currentPage - offset
+    });
+    const newCurrentPage =
+      direction === '' ? currentPage + offset : currentPage - offset;
+    const nextPaginatedPersons = personsFromApi.Brastlewark.slice(
+      newCurrentPage,
+      newCurrentPage + offset
     );
-  }
-}
+    setState({
+      ...state,
+      persons: nextPaginatedPersons,
+      currentPage: newCurrentPage
+    });
+  };
+
+  // componentDidMount
+  useEffect(() => {
+    const { currentPage, offset } = state;
+    try {
+      axios
+        .get(
+          'https://raw.githubusercontent.com/rrafols/mobile_test/master/data.json'
+        )
+        .then(res => {
+          const persons = res.data;
+          const paginatedPersons = persons.Brastlewark.slice(
+            currentPage,
+            offset
+          );
+          setState({
+            ...state,
+            personsFromApi: res.data,
+            persons: paginatedPersons,
+            totalPersons: persons.Brastlewark.length
+          });
+        });
+    } catch (e) {
+      console.log(e);
+    }
+  }, []);
+
+  return (
+    <div className='home'>
+      <nav>
+        <h1>Brastlewark App</h1>
+        <div className='search'>
+          <input onKeyUp={e => handleSearch(e)} />
+          {['previous', 'next'].map(key => (
+            <button
+              key={key}
+              onClick={() => {
+                handlePageMovement(key);
+              }}
+              className='btn'
+            >
+              {key}
+            </button>
+          ))}
+        </div>
+      </nav>
+      <Cards persons={state.persons} />
+    </div>
+  );
+};
+
+export default Brastlewark;
