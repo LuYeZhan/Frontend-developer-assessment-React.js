@@ -83,7 +83,7 @@ export default class Brastlewark extends Component {
             <button onClick={this.handlePreviousPage} className='btn'>
               previous
             </button>
-            <button onClick={this.handleNextPage} className='next btn'>
+            <button onClick={this.handleNextPage} className='btn'>
               next
             </button>
           </div>

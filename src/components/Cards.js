@@ -4,11 +4,11 @@ export default class Cards extends Component {
   render() {
     const { persons } = this.props;
     return (
-      <div className='content'>
+      <div className='card'>
         {persons.length > 0 &&
           persons.map((person, index) => {
             return (
-              <div className='card__person'>
+              <div className='card__person card__person--green'>
                 <ul className='card__content' key={person.id}>
                   <li>
                     <h2>{person.name}</h2>

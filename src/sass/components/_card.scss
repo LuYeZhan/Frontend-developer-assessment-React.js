@@ -9,31 +9,32 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  transition: all 0.4s;
 
-  &:hover {
+  &--green:hover {
     transform: translateY(-1.5rem) scale(1.03);
     background-color: $color-primary;
   }
 }
 
-.content {
+.card {
   padding: 140px 20px;
 }
 
 @media (min-width: 768px) {
-  .content {
+  .card {
     padding: 100px 20px;
   }
 }
 
 @media (min-width: 1024px) {
-  .content {
+  .card {
     padding: 100px 20px;
   }
 }
 
 @media (min-width: 768px) {
-  .content {
+  .card {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -47,7 +48,7 @@
 }
 
 @media (min-width: 1024px) {
-  .content {
+  .card {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;

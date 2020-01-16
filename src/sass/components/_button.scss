@@ -3,7 +3,7 @@
   font-family: Arial;
   color: #ffffff;
   font-size: 14px;
-  background: #007dd1;
+  background: $color-primary;
   padding: 5px 11px;
   text-decoration: none;
   border: none;
@@ -11,6 +11,6 @@
 }
 
 .btn:hover {
-  background: #3cb0fd;
+  background: $color-primary-light;
   text-decoration: none;
 }
