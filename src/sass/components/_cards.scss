@@ -1,0 +1,23 @@
+.cards {
+  padding: 140px 20px;
+}
+
+@media (min-width: 768px) {
+  .cards {
+    padding: 100px 20px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+}
+
+@media (min-width: 1024px) {
+  .cards {
+    padding: 100px 20px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+}
